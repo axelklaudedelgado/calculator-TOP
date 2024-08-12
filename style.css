@@ -1,0 +1,65 @@
+body {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+}
+
+#mainContainer {
+    background-color: black;
+    border-radius: 20px;
+    width: 350px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#screen {
+    margin: 20px;
+    height: 20%;
+    width: 90%;
+    background-color: #3c3c3c;
+}
+
+#buttonsContainer {
+    display: flex;
+    width: 90%;
+    height: 80%;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.rows {
+    display: flex;
+    width: 315px;
+    justify-content: space-between;
+}
+
+.buttons {
+    padding: 8px;
+    background-color: #333333;
+    color: #fefefe;
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 50%;
+    font-size: 30px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.numbers {
+    font-weight: bold;
+}
+
+.operators {
+    background-color: #fe9505;
+}
+
+#zero {
+    border-radius: 35px;
+    width: 150px;
+}
