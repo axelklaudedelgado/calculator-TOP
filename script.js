@@ -13,7 +13,13 @@ function updateDisplay (value) {
 }
 
 function backspace () {
-    display.textContent = display.textContent.slice(0, -1);
+    if (display.textContent == "0") {
+        //pass
+    } else if (display.textContent != "0" && display.textContent.length == 1) {
+        display.textContent = "0";
+    } else {
+        display.textContent = display.textContent.slice(0, -1);
+    }
 }
 
 display = document.querySelector("#screen");
