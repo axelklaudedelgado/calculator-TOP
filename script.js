@@ -12,4 +12,8 @@ function updateDisplay (value) {
     } 
 }
 
+function backspace () {
+    display.textContent = display.textContent.slice(0, -1);
+}
+
 display = document.querySelector("#screen");
