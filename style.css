@@ -55,12 +55,20 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
+.buttons:active {
+    background-color: #555555;
+}
+
 .numbers {
     font-weight: bold;
 }
 
 .operators {
     background-color: #fe9505;
+}
+
+.operators:active {
+    background-color: #D97F04;
 }
 
 #zero {
