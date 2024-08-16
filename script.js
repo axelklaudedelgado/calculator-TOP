@@ -20,4 +20,8 @@ function backspace () {
     }
 }
 
+function clearDisplay () {
+    display.textContent = "0";
+}
+
 display = document.querySelector("#screen");
