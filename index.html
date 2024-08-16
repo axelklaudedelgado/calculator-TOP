@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="mainContainer">
-        <div id="screen">092312312312</div>
+        <div id="screen">0</div>
         <div id="buttonsContainer">
             <div class="rows">
                 <button class="buttons">AC</button>
@@ -17,26 +17,26 @@
                 <button class="buttons operators">÷</button>
             </div>
             <div class="rows">
-                <button class="buttons numbers">7</button>
-                <button class="buttons numbers">8</button>
-                <button class="buttons numbers">9</button>
+                <button class="buttons numbers" onclick="updateDisplay('7')">7</button>
+                <button class="buttons numbers" onclick="updateDisplay('8')">8</button>
+                <button class="buttons numbers" onclick="updateDisplay('9')">9</button>
                 <button class="buttons operators">×</button>
             </div>
             <div class="rows">
-                <button class="buttons numbers">4</button>
-                <button class="buttons numbers">5</button>
-                <button class="buttons numbers">6</button>
+                <button class="buttons numbers" onclick="updateDisplay('4')">4</button>
+                <button class="buttons numbers" onclick="updateDisplay('5')">5</button>
+                <button class="buttons numbers" onclick="updateDisplay('6')">6</button>
                 <button class="buttons operators">-</button>
             </div>
             <div class="rows">
-                <button class="buttons numbers">1</button>
-                <button class="buttons numbers">2</button>
-                <button class="buttons numbers">3</button>
+                <button class="buttons numbers" onclick="updateDisplay('1')">1</button>
+                <button class="buttons numbers" onclick="updateDisplay('2')">2</button>
+                <button class="buttons numbers" onclick="updateDisplay('3')">3</button>
                 <button class="buttons operators">+</button>
             </div>
             <div class="rows">
-                <button class="buttons numbers" id="zero">0</button>
-                <button class="buttons">.</button>
+                <button class="buttons numbers" id="zero" onclick="updateDisplay('0')">0</button>
+                <button class="buttons" onclick="updateDisplay('.')">.</button>
                 <button class="buttons operators">=</button>
             </div>
         </div>
