@@ -26,6 +26,7 @@ body {
     align-items: flex-end;
     justify-content: right;
     font-size: 50px;
+    color: white;
 }
 
 #buttonsContainer {
