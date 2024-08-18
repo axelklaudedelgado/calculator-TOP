@@ -20,6 +20,31 @@ function backspace () {
     }
 }
 
+function updateOperator (value) {
+    operator = value;
+    let operatorDisplay; 
+    switch (value) {
+        case '/':
+            operatorDisplay = "÷";
+            break;
+        case '*':
+            operatorDisplay = "×";
+            break;
+        case '+':
+            operatorDisplay = "+";
+            break;
+        case '-':
+            operatorDisplay = "-";
+            break;
+    }
+    
+    if (!firstNumber) {
+        firstNumber = parseInt(display.textContent);
+        display.textContent = "0";
+        expression.textContent = firstNumber + operatorDisplay;
+    }
+}
+
 function clearDisplay () {
     display.textContent = "0";
     expression.textContent = "";
