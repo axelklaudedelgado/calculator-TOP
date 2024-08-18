@@ -22,6 +22,18 @@ function backspace () {
 
 function clearDisplay () {
     display.textContent = "0";
+    expression.textContent = "";
+    firstNumber = null;
+    secondNumber = null;
+    operator = null;
 }
 
-display = document.querySelector("#screen");
+function getDisplayValue () {
+    return parseInt(display.textContent);
+}
+
+let operator; 
+let firstNumber;
+let secondNumber;
+const expression = document.querySelector(".expression");
+const display = document.querySelector(".bottomNumber");
