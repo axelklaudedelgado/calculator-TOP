@@ -1,7 +1,8 @@
 function updateDisplay (value) {
     if (display.textContent.length != 12) {
-        if (display.textContent == "0" && value != ".") {
+        if ((display.textContent == "0" && value != ".") || result) {
             display.textContent = value;
+            result = null;
         } else {
             if (value == "." && display.textContent.includes(".")) {
                 //pass
@@ -42,23 +43,44 @@ function updateOperator (value) {
         firstNumber = parseInt(display.textContent);
         display.textContent = "0";
         expression.textContent = firstNumber + operatorDisplay;
-    }
+    } 
 }
 
 function clearDisplay () {
     display.textContent = "0";
     expression.textContent = "";
-    firstNumber = null;
-    secondNumber = null;
-    operator = null;
+    clearValues();
 }
 
 function getDisplayValue () {
     return parseInt(display.textContent);
 }
 
+function clearValues () {
+    firstNumber = null;
+    secondNumber = null;
+    operator = null;
+}
+
+function operate () {
+    secondNumber = parseInt(display.textContent);
+    expression.textContent += secondNumber + "=";
+    if (firstNumber && operator) {
+        result = (operators[operator](firstNumber, secondNumber));
+        display.textContent = result;
+        clearValues();
+    }
+}
+
+let operators = {
+    '+': function(a, b) { return a + b },
+    '-': function(a, b) { return a - b },
+    '/': function(a, b) { return a / b },
+    '*': function(a, b) { return a * b },
+};
 let operator; 
 let firstNumber;
 let secondNumber;
+let result;
 const expression = document.querySelector(".expression");
 const display = document.querySelector(".bottomNumber");
