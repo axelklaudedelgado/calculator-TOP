@@ -1,16 +1,10 @@
 function updateDisplay (value) {
     if (display.textContent.length != 12) {
-        if (display.textContent == "0" && value != ".") {
-            display.textContent = value;
-        } else if (result) {
+        if ((display.textContent == "0" && value != ".") || result) {
             if (!operator) {
                 expression.textContent = "";
             }
-            if (value == ".") {
-                display.textContent = "0.";
-            } else {
-                display.textContent = value;
-            }
+            display.textContent = value;
             result = null;
         } else {
             if (value == "." && display.textContent.includes(".")) {
