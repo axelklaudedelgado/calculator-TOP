@@ -51,13 +51,11 @@ function updateOperator (value) {
             break;
     }
 
-    if (!operator) {
-        operator = value;
+    if (isNaN(parseFloat(display.textContent))) {
+        return;
     }
-    
-    if (display.textContent == "Math Error") {
-        display.textContent = 0;
-        expression.textContent = "";
+
+    if (!operator) {
         operator = value;
     }
     
@@ -91,6 +89,10 @@ function clearValues () {
 }
 
 function operate () {
+    if (isNaN(parseFloat(display.textContent))) {
+        return;
+    }
+    
     if (operator) {
         secondNumber = parseFloat(display.textContent);
         expression.textContent += secondNumber + "=";
@@ -100,7 +102,7 @@ function operate () {
             let decimalLength = 11 - resultSplit[0].length;
             result = result.toFixed(decimalLength);
         }
-        if (result === Infinity) {
+        if (result === Infinity || result === -Infinity) {
             result = "Math Error"
         }
         display.textContent = result;
@@ -109,6 +111,10 @@ function operate () {
 }
 
 function changeSign () {
+    if (isNaN(parseFloat(display.textContent))) {
+        return;
+    }
+
     if (!operator) {
         expression.textContent = "";
     }
