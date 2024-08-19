@@ -27,7 +27,7 @@ function backspace () {
         expression.textContent = "";
     }
 
-    if (display.textContent.length == 1) {
+    if (display.textContent.length == 1 || display.textContent == "Math Error") {
         display.textContent = "0";
     } else {
         display.textContent = display.textContent.slice(0, -1);
@@ -54,7 +54,13 @@ function updateOperator (value) {
     if (!operator) {
         operator = value;
     }
-
+    
+    if (display.textContent == "Math Error") {
+        display.textContent = 0;
+        expression.textContent = "";
+        operator = value;
+    }
+    
     if (!firstNumber) {
         firstNumber = parseFloat(display.textContent);
         display.textContent = "0";
@@ -65,7 +71,7 @@ function updateOperator (value) {
         operator = value;
         display.textContent = "0";
         expression.textContent = firstNumber + operatorDisplay;
-    }
+    } 
 }
 
 function clearDisplay () {
