@@ -22,7 +22,6 @@ function backspace () {
 }
 
 function updateOperator (value) {
-    operator = value;
     let operatorDisplay; 
     switch (value) {
         case '/':
@@ -38,12 +37,22 @@ function updateOperator (value) {
             operatorDisplay = "-";
             break;
     }
-    
+
+    if (!operator) {
+        operator = value;
+    }
+
     if (!firstNumber) {
         firstNumber = parseInt(display.textContent);
         display.textContent = "0";
         expression.textContent = firstNumber + operatorDisplay;
-    } 
+    } else if (operator) {
+        operate();
+        firstNumber = result;
+        operator = value;
+        display.textContent = "0";
+        expression.textContent = firstNumber + operatorDisplay;
+    }
 }
 
 function clearDisplay () {
@@ -63,9 +72,9 @@ function clearValues () {
 }
 
 function operate () {
-    secondNumber = parseInt(display.textContent);
-    expression.textContent += secondNumber + "=";
-    if (firstNumber && operator) {
+    if (operator) {
+        secondNumber = parseInt(display.textContent);
+        expression.textContent += secondNumber + "=";
         result = (operators[operator](firstNumber, secondNumber));
         display.textContent = result;
         clearValues();
