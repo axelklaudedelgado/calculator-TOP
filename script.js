@@ -2,8 +2,6 @@ function updateDisplay(value) {
     const maxLength = 12;
     const currentDisplay = display.textContent;
 
-    if (currentDisplay.length === maxLength) return;
-
     if (result) {
         result = null;
         if (!operator) expression.textContent = "";
@@ -11,6 +9,8 @@ function updateDisplay(value) {
         display.textContent = (value === ".") ? "0." : value;
         return;
     }
+
+    if (currentDisplay.length >= maxLength) return;
 
     if (currentDisplay === "0" && value !== ".") {
         display.textContent = value;
@@ -92,7 +92,7 @@ function operate () {
     if (isNaN(parseFloat(display.textContent))) {
         return;
     }
-    
+
     if (operator) {
         secondNumber = parseFloat(display.textContent);
         expression.textContent += secondNumber + "=";
@@ -120,6 +120,7 @@ function changeSign () {
     }
 
     if (display.textContent != 0) {
+        result = null;
         display.textContent.includes("-") ? display.textContent = display.textContent.slice(1) : display.textContent = "-" + display.textContent; 
     }
 }
