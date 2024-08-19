@@ -26,6 +26,7 @@ function backspace () {
     if (!operator) {
         expression.textContent = "";
     }
+
     if (display.textContent.length == 1) {
         display.textContent = "0";
     } else {
@@ -93,6 +94,16 @@ function operate () {
         }
         display.textContent = result;
         clearValues();
+    }
+}
+
+function changeSign () {
+    if (!operator) {
+        expression.textContent = "";
+    }
+
+    if (display.textContent != 0) {
+        display.textContent.includes("-") ? display.textContent = display.textContent.slice(1) : display.textContent = "-" + display.textContent; 
     }
 }
 
