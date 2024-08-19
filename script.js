@@ -89,6 +89,11 @@ function operate () {
         secondNumber = parseFloat(display.textContent);
         expression.textContent += secondNumber + "=";
         result = (operators[operator](firstNumber, secondNumber));
+        if (result.toString().length > 12) {
+            let resultSplit = result.toString().split(".");
+            let decimalLength = 11 - resultSplit[0].length;
+            result = result.toFixed(decimalLength);
+        }
         if (result === Infinity) {
             result = "Math Error"
         }
