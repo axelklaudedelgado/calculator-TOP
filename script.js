@@ -1,10 +1,16 @@
 function updateDisplay (value) {
     if (display.textContent.length != 12) {
-        if ((display.textContent == "0" && value != ".") || result) {
+        if (display.textContent == "0" && value != ".") {
+            display.textContent = value;
+        } else if (result) {
             if (!operator) {
                 expression.textContent = "";
             }
-            display.textContent = value;
+            if (value == ".") {
+                display.textContent = "0.";
+            } else {
+                display.textContent = value;
+            }
             result = null;
         } else {
             if (value == "." && display.textContent.includes(".")) {
@@ -49,7 +55,7 @@ function updateOperator (value) {
     }
 
     if (!firstNumber) {
-        firstNumber = parseInt(display.textContent);
+        firstNumber = parseFloat(display.textContent);
         display.textContent = "0";
         expression.textContent = firstNumber + operatorDisplay;
     } else if (operator) {
@@ -68,7 +74,7 @@ function clearDisplay () {
 }
 
 function getDisplayValue () {
-    return parseInt(display.textContent);
+    return parseFloat(display.textContent);
 }
 
 function clearValues () {
@@ -79,9 +85,12 @@ function clearValues () {
 
 function operate () {
     if (operator) {
-        secondNumber = parseInt(display.textContent);
+        secondNumber = parseFloat(display.textContent);
         expression.textContent += secondNumber + "=";
         result = (operators[operator](firstNumber, secondNumber));
+        if (result === Infinity) {
+            result = "Math Error"
+        }
         display.textContent = result;
         clearValues();
     }
