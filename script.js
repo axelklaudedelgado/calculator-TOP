@@ -1,19 +1,25 @@
-function updateDisplay (value) {
-    if (display.textContent.length != 12) {
-        if ((display.textContent == "0" && value != ".") || result) {
-            if (!operator) {
-                expression.textContent = "";
-            }
-            display.textContent = value;
-            result = null;
-        } else {
-            if (value == "." && display.textContent.includes(".")) {
-                //pass
-            } else {
-                display.textContent += value;
-            }
-        }
-    } 
+function updateDisplay(value) {
+    const maxLength = 12;
+    const currentDisplay = display.textContent;
+
+    if (currentDisplay.length === maxLength) return;
+
+    if (result) {
+        result = null;
+        if (!operator) expression.textContent = "";
+
+        display.textContent = (value === ".") ? "0." : value;
+        return;
+    }
+
+    if (currentDisplay === "0" && value !== ".") {
+        display.textContent = value;
+        return;
+    }
+
+    if (!(value === "." && currentDisplay.includes("."))) {
+        display.textContent += value;
+    }
 }
 
 function backspace () {
