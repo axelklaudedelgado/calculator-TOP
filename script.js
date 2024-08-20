@@ -1,8 +1,8 @@
 function updateDisplay(value) {
-    const maxLength = 12;
+    const maxLength = 10;
     const currentDisplay = display.textContent;
 
-    if (result) {
+    if (result || currentDisplay.length > maxLength) {
         result = null;
         if (!operator) expression.textContent = "";
 
@@ -10,7 +10,7 @@ function updateDisplay(value) {
         return;
     }
 
-    if (currentDisplay.length >= maxLength) return;
+    if (currentDisplay.length == maxLength) return;
 
     if (currentDisplay === "0" && value !== ".") {
         display.textContent = value;
@@ -97,9 +97,9 @@ function operate () {
         secondNumber = parseFloat(display.textContent);
         expression.textContent += secondNumber + "=";
         result = (operators[operator](firstNumber, secondNumber));
-        if (result.toString().length > 12) {
+        if (result.toString().length > 10) {
             let resultSplit = result.toString().split(".");
-            let decimalLength = 11 - resultSplit[0].length;
+            let decimalLength = 9 - resultSplit[0].length;
             result = result.toFixed(decimalLength);
         }
         if (result === Infinity || result === -Infinity) {
@@ -119,7 +119,7 @@ function changeSign () {
         expression.textContent = "";
     }
 
-    if (display.textContent != 0) {
+    if (display.textContent != "0") {
         result = null;
         display.textContent.includes("-") ? display.textContent = display.textContent.slice(1) : display.textContent = "-" + display.textContent; 
     }
